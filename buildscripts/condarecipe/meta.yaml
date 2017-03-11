@@ -1,0 +1,42 @@
+package:
+  name: postgresadapter
+  version: "1.9.1"
+
+source:
+  path: ../../
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python 
+    - numpy
+    - cython
+    - postgresql
+
+  run:
+    - python 
+    - numpy
+    - pandas
+    - six
+    - ordereddict     [py26]
+    - libpq
+
+test:
+  requires:
+    - nose
+    - pytest
+    - sqlalchemy
+    - psycopg2
+
+  imports:
+    - postgresadapter
+    - postgresadapter.core
+    - postgresadapter.core.PostgresAdapter
+
+about:
+  home: http://www.continuum.io/
+  license: proprietary - Continuum Analytics, Inc.
+  license_family: Proprietary
+  summary: python interface for PostgreSQL databases

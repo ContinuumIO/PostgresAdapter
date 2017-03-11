@@ -1,0 +1,33 @@
+#!/bin/bash
+
+PYTHON_VERSION=2.7
+
+if [ "${PYTHON_VERSION}" == "" ]; then
+    echo You must select a Python version with the PYTHON_VERSION variable.
+    exit 1
+fi
+
+# Start from scratch
+if [ -d build ]; then
+    rm -rf build
+fi
+mkdir build
+cd build
+
+# Use conda to create a conda environment of the required
+# python version and containing the dependencies.
+export PYENV_PREFIX=${WORKSPACE}/build/pyenv
+rm -rf ${PYENV_PREFIX}
+~/anaconda/bin/conda create --yes -p ${PYENV_PREFIX} anaconda python=${PYTHON_VERSION} numpy=1.7 || exit 1
+export PATH=${PYENV_PREFIX}/bin:${PATH}
+
+# JNB: Get rid of any iopro that conda may have installed
+rm -rf ${PYENV_PREFIX}/lib/python2.7/site-packages/iopro*
+
+# Set up include and lib paths since we're not installing in default system paths
+export IOPRO_INCLUDE_PATH=~/anaconda/include/python${PYTHON_VERSION}:$IOPRO_INCLUDE_PATH
+export IOPRO_LIBRARY_PATH=~/anaconda/lib:$IOPRO_LIBRARY_PATH
+
+cd ..
+python setup.py build_ext --inplace --include-dirs=$IOPRO_INCLUDE_PATH --library-dirs=$IOPRO_LIBRARY_PATH || exit 1
+python -c 'import iopro; import sys; sys.exit(1 - iopro.test(num_records=1000))'

@@ -1,0 +1,12 @@
+name: postgresadapter
+dependencies:
+- ipython
+- numpy
+- pandas
+- pytest
+- cython
+- libpq
+- postgresql
+- nose
+- sqlalchemy
+- psycopg2
