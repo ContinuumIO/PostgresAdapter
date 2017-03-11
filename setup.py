@@ -79,8 +79,8 @@ def run_setup():
     setup(name='postgresadapter',
           version = versioneer.get_version(),
           description='optimized IO for NumPy/Blaze',
-          author='Jay Bourque',
-          author_email='jay.bourque@continuum.io',
+          author='Continuum Analytics',
+          author_email='support@continuum.io',
           ext_modules=ext_modules,
           packages=packages,
           cmdclass=cmdclass)
