@@ -24,7 +24,7 @@ matches the version of Python you're building for.  Python 2.6 and 2.7 needs
 Visual Studio 2008, Python 3.3 and 3.4 needs Visual Studio 2010, and Python
 3.5 needs Visual Studio 2015.
 
-1. Install [Docker](https://docs.docker.com/engine/installation/). Add the current user to the `docker` group and restart the daemon, so that `docker` commands can be executed without root privileges.
+1. Install [Docker](https://docs.docker.com/engine/installation/). Add the current user to the `docker` group and restart the daemon, so that `docker` commands can be executed without root privileges
 
 1. Build PostgresAdapter using the following command:
    `conda build buildscripts/condarecipe --python 3.5`
@@ -54,12 +54,12 @@ For building PostgresAdapter for local development/testing:
 Testing
 -------
 
-To get a test database running run the following command (after [installing Docker](https://docs.docker.com/engine/installation/)):
+To get a test database running, execute the following command (after [installing Docker](https://docs.docker.com/engine/installation/)):
 ```
 docker run --name postgres-db --publish 5432:5432 -d mdillon/postgis:9.5-alpine
 ```
 
-The Docker image is a ~150MB download. Once downloaded it should take about 10 seconds for the database to start. Test that the database is up by connecting over the command line:
+The Docker image is a ~150MB download. Once downloaded it should take about 10 seconds for the database to start. Once the database is up you may connect to it over the command line:
 ```
 psql -h localhost -U postgres
 ```
@@ -74,7 +74,7 @@ Tests can be run by calling the postgresadapter module's test function:
 python -Wignore -c 'import postgresadapter; postgresadapter.test()'
 ```
 
-To run the PostGIS tests, execute the following command. It may require a restart of the docker container:
+To run the PostGIS tests, execute the following command:
 ```python
 python -Wignore -c 'import postgresadapter; postgresadapter.test_postgis()'
 ```
