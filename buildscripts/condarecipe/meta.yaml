@@ -37,6 +37,5 @@ test:
 
 about:
   home: http://www.continuum.io/
-  license: proprietary - Continuum Analytics, Inc.
-  license_family: Proprietary
+  license: BSD
   summary: python interface for PostgreSQL databases
