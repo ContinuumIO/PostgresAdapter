@@ -11,13 +11,14 @@ build:
 requirements:
   build:
     - python 
-    - numpy
+    - numpy 1.11*
     - cython
     - postgresql
+    - psycopg2
 
   run:
     - python 
-    - numpy
+    - numpy 1.11*
     - pandas
     - six
     - ordereddict     [py26]
@@ -28,7 +29,6 @@ test:
     - nose
     - pytest
     - sqlalchemy
-    - psycopg2
 
   imports:
     - postgresadapter

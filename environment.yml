@@ -1,7 +1,7 @@
 name: postgresadapter
 dependencies:
 - ipython
-- numpy
+- numpy =1.11
 - pandas
 - pytest
 - cython

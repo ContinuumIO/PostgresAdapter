@@ -11,7 +11,7 @@ Build Requirements
 Building PostgresAdapter requires a number of dependencies. In addition to a C/C++ dev
 environment, the following modules are needed, which can be installed via conda:
 
-* NumPy
+* NumPy 1.11
 * Pandas
 * postgresql 0.9.3 (C lib)
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import sys
 import logging
 import string
 import numpy as np
@@ -11,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 CASTS_TEST_NUM_RECORDS = 23456
 
-if __name__ == '__main__':
+def main():
     conn = psycopg2.connect(host='localhost',
                             dbname='postgres',
                             user='postgres',
@@ -183,3 +184,9 @@ if __name__ == '__main__':
     conn.commit()
     cursor.close()
     conn.close()
+
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
