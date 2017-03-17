@@ -29,6 +29,7 @@ test:
     - nose
     - pytest
     - sqlalchemy
+    - psycopg2
 
   imports:
     - postgresadapter
