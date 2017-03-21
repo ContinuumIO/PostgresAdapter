@@ -86,3 +86,11 @@ To run the PostGIS tests, execute the following command:
 ```python
 python -Wignore -c 'import postgresadapter; postgresadapter.test_postgis()'
 ```
+
+Related projects
+----------------
+
+- TextAdapter (CSV, JSON, etc): https://github.com/ContinuumIO/TextAdapter
+- DBAdapter (SQL derivatives): https://github.com/ContinuumIO/DBAdapter
+- AccumuloAdapter (Apache Accumulo): https://github.com/ContinuumIO/AccumuloAdapter
+- MongoAdapter (MongoDB): https://github.com/ContinuumIO/MongoAdapter
