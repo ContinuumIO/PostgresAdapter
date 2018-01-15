@@ -12,10 +12,11 @@ logger = logging.getLogger(__name__)
 
 CASTS_TEST_NUM_RECORDS = 23456
 
-def main():
+def main(port='5432'):
     conn = psycopg2.connect(host='localhost',
                             dbname='postgres',
-                            user='postgres')
+                            user='postgres',
+                            port=port)
     conn.set_isolation_level(0)
     cursor = conn.cursor()
     logger.debug('Creating database "unit_tests"...')
@@ -25,7 +26,8 @@ def main():
 
     conn = psycopg2.connect(host='localhost',
                             dbname='postgres', #unit_tests',
-                            user='postgres')
+                            user='postgres',
+                            port=port)
 
     cursor = conn.cursor()
     logger.debug('Installing postgis extensions if necessary...')
