@@ -17,17 +17,19 @@ def postgres(request):
 
     class Dummy(object):
 
-        def __init__(self, host, dbname, user):
+        def __init__(self, host, dbname, user, port):
             self.host = host
             self.dbname = dbname
             self.user = user
+            self.port = port
 
         def url(self):
-            return 'host={0} dbname={1} user={2}'.format(self.host, self.dbname, self.user)
+            return 'host={0} dbname={1} user={2} port={3}'.format(self.host, self.dbname, self.user, self.port)
 
     postgresql = Dummy(request.config.option.pg_host,
                        request.config.option.pg_dbname,
-                       request.config.option.pg_user)
+                       request.config.option.pg_user,
+                       request.config.option.pg_port)
     return postgresql
 
 def test_connection(postgres):

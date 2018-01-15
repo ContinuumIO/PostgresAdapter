@@ -24,7 +24,7 @@ from postgresadapter.lib.errors import (AdapterException, AdapterIndexError,
                                     ParserError, SourceError, SourceNotFoundError)
 
 
-def test(host='localhost', dbname='postgres', user='postgres', verbose=True):
+def test(host='localhost', dbname='postgres', user='postgres', port='5432', verbose=True):
     test_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tests')        
     postgres_test_script = 'test_PostgresAdapter.py'
     args = []
@@ -32,6 +32,7 @@ def test(host='localhost', dbname='postgres', user='postgres', verbose=True):
     args.append('--pg_host {0}'.format(host))
     args.append('--pg_dbname {0}'.format(dbname))
     args.append('--pg_user {0}'.format(user))
+    args.append('--pg_port {0}'.format(port))
     if verbose:
         args.append('-v')
 
@@ -42,11 +43,12 @@ def test(host='localhost', dbname='postgres', user='postgres', verbose=True):
     return False
 
 
-def test_postgis(host='localhost', dbname='postgres', user='postgres', verbose=True):
+def test_postgis(host='localhost', dbname='postgres', user='postgres', port='5432', verbose=True):
     test_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tests')        
     postgis_test_script = 'test_PostGIS.py'
     args = []
     args.append(os.path.join(test_dir, postgis_test_script))
+    args.append('--pg_port {0}'.format(port))
     if verbose:
         args.append('-v')
 

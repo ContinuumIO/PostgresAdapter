@@ -9,9 +9,16 @@ import psycopg2
 import string
 import pytest
 
+
+@pytest.fixture(scope='class')
+def pg_config(request):
+    """Set the postgresql_url attribute on TestCase classes."""
+    request.cls.postgresql_url = 'postgresql://postgres@localhost:{}/postgres'.format(request.config.option.pg_port)
+
+
+@pytest.mark.usefixtures('pg_config')
 class TestPostGIS(unittest.TestCase):
     def setUp(self):
-        self.postgresql_url = 'postgresql://postgres@localhost:5432/postgres'
         engine = sqlalchemy.create_engine(self.postgresql_url)
         self.conn = engine.connect()
 
