@@ -9,7 +9,6 @@ from __future__ import absolute_import
 
 import sys
 import os
-import pytest
 
 from postgresadapter._version import get_versions
 __version__ = get_versions()['version']
@@ -25,6 +24,7 @@ from postgresadapter.lib.errors import (AdapterException, AdapterIndexError,
 
 
 def test(host='localhost', dbname='postgres', user='postgres', port='5432', verbose=True):
+    import pytest
     test_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tests')        
     postgres_test_script = 'test_PostgresAdapter.py'
     args = []
@@ -44,6 +44,7 @@ def test(host='localhost', dbname='postgres', user='postgres', port='5432', verb
 
 
 def test_postgis(host='localhost', dbname='postgres', user='postgres', port='5432', verbose=True):
+    import pytest
     test_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tests')        
     postgis_test_script = 'test_PostGIS.py'
     args = []
